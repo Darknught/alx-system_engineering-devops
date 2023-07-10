@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -type rm -R .js*
+find . -type d rm .js*

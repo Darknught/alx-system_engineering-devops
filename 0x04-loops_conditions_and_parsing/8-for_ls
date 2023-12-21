@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# script that displays content of the current directory in a list format
+# where only part of the name after the first dash is displayed
+
+
+for filename in *; do
+
+	if [[ $filename =~ ^[0-9]+-(.*)$ ]]; then
+		after_dash="${BASH_REMATCH[1]}"
+		echo "$after_dash"
+	fi
+
+done

@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# Script prints 1 - 20 using the while ans case statement but
+# prints 'back from China' after 4, 'back from Japan' after 9
+# and 'back from Italy' after 17
+
+
+count=1
+
+while [ $count -le 20 ]; do
+	echo "$count"
+
+	case $count in
+		4)
+			echo "back from China"
+			;;
+		9)
+			echo "back from Japan"
+			;;
+		17)
+			echo "back from Italy"
+			;;
+	esac
+
+	((count++))
+
+done

@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# This sript displays the time for 12 hours and 59 minutes
+# displays hours from 0-12 and minutes from 1-59
+# It is printed each on a newline and piping the output to head -n 70
+# to get the first 70 lines
+
+hour=0
+
+while [ $hour -le 12 ]; do
+	echo "Hour: $hour"
+
+	minute=1
+
+	while [ $minute -le 59 ]; do
+		echo "$minute"
+
+		((minute++))
+
+	done
+
+	((hour++))
+
+done | head -n 70

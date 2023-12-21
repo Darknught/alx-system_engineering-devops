@@ -11,13 +11,13 @@ while [ $count -le 20 ]; do
 
 	case $count in
 		4)
-			echo "back from China"
+			echo "bad luck from China"
 			;;
 		9)
-			echo "back from Japan"
+			echo "bad luck from Japan"
 			;;
 		17)
-			echo "back from Italy"
+			echo "bad luck from Italy"
 			;;
 	esac
 

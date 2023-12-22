@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Script that displays pid along with the process name containing tge word bash
+
+pgrep -f bash | while read -r pid; do
+	ps -p "$pid" -o pid,comm --no-headers
+done

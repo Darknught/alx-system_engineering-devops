@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Script that indefinatly wirtes I am alive to the file /tmp/my_process
+# and in between every I am alive message it will pause for 2 seconds
+
+cleanup() {
+	echo "manage_my_process stopped"
+	rm -f "/var/run/my_process.pid"
+	exit 0
+}
+
+trap 'cleanup' SIGTERM SIGQUIT
+
+echo "$$" > /var/run/my_process.pid
+
+while true; do
+	echo "I am alive!" > /tmp/my_process
+	sleep 2
+done

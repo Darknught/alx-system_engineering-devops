@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Bash Script that uses kill to terminate infinite loop of previous task
+
+kill "$(pgrep -f 4-to_infinity_and_beyond)"

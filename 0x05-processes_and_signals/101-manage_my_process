@@ -2,7 +2,7 @@
 # script that manages the manage_my_process script
 
 usage() {
-	echo "Usage: $0 {start|stop|restart}"
+	echo "Usage: manage_your_process {start|stop|restart}"
 	exit 1
 }
 

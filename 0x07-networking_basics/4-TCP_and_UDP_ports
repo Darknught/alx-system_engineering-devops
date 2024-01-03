@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# A script that displays listening ports
+# That shows only listening sockets
+# That shows the PID and name of the program to which the socket belongs
+
+if [ "$EUID" -ne 0 ]; then
+	echo "please run as root"
+	exit 1
+fi
+
+ss -tuln | awk 'NR > 1 {print $5}' | cut -d':' -f2 | sort -u | while read -r port; do
+echo "Listening on port $port:"
+ss -tuln | grep ":$port " | awk '{print "  PID: " $6 " - Program: " $7}'
+done

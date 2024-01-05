@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # A script that listens on port 98 on localhost
 
 if [ "$EUID" -ne 0 ]; then

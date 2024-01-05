@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # A script that configures an ubuntu server with the below requirements
 # localhost resolves to 127.0.0.2 and facebook.com to 8.8.8.8
 
@@ -9,7 +8,6 @@ if [ "$EUID" -ne 0 ]; then
 
 fi
 
-# Backup the original hosts file
 cp /etc/hosts /etc/hosts.backup
 
 sed -i '/localhost/d' /etc/hosts

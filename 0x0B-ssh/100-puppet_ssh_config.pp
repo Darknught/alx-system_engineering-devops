@@ -1,6 +1,5 @@
 # make changes to config file using Puppet
 
-include stdlib
 
 file_line { 'Refuse to authenticate using a password':
   ensure => present,

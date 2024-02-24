@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# A script that creates an RSA key pair
+# Name of the created prvt key must be school, number of bits in the key 4096
+# passphrase 'betty'
+
+ssh-keygen -f school -b 4096 -N betty

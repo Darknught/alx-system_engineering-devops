@@ -3,8 +3,3 @@
 Host *
     PasswordAuthentication no
     IdentityFile ~/.ssh/school
-    SendEnv LANG LC_*
-    HashKnownHosts yes
-    GSSAPIAuthentication yes
-    HostName 35.168.3.169
-    User ubuntu

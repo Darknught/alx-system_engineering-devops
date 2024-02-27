@@ -7,6 +7,7 @@
 ## As an answer file, write a Bash script that configures a new Ubuntu machine\
 ### to respect above requirements (this script will be run on the server itself)
 ## You can’t use systemctl for restarting nginx
+# Configures Nginx server so that /redirect_me is redirecting to another page
 
 apt-get -y update
 apt-get -y install nginx

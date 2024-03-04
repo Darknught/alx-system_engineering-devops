@@ -19,4 +19,4 @@ backend hbnb-lb_back
 
 echo "ENABLED=1" >> /etc/default/haproxy
 
-service haproxy start
+service haproxy restart

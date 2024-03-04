@@ -1,8 +1,4 @@
 #!/usr/bin/env bash
-# Install HAProxy and configures it in a load balancer server
-# Distributes requests using a round-robin algorithm.
-
-#!/usr/bin/env bash
 # Installs HAProxy version 1.8 with the following configurations:
 #+    Enables management via the init script.
 #+    Distributes requests using a round-robin algorithm.

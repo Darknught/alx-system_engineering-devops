@@ -3,15 +3,20 @@ package { 'nginx':
   ensure => installed,
 }
 
-file_line { 'aaaaa':
-  ensure => 'present',
-  path   => '/etc/nginx/sites-available/default',
-  after  => 'listen 80 default_server;',
-  line   => 'add_header X-Served-By $hostname;',
+file_line { '/etc/nginx/sites-available/default':
+  ensure => present,
+  content => server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    add_header X-Served-By $hostname;
+    root /var/www/html;
+    index index.html index.htm;
+    }
 }
 
-file { '/var/www/html/index.html':
-  content => 'Hello World!',
+file { '/var/www/html/index/html':
+  content => 'Hello World',
 }
 
 service { 'nginx':

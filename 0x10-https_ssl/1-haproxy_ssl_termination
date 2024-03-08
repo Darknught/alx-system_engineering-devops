@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# Installs HAProxy version 1.8 with the following configurations:
+#+    Enables management via the init script.
+#+    Distributes requests using a round-robin algorithm.
+# Creates a certificate using certbot and configure Haproxy to accept
+# encrypted traffic from subdomain www.
+
+apt-get install -y software-properties-common
+add-apt-repository -y ppa:vbernat/haproxy-2.4
+apt-get -y update
+apt-get install -y haproxy
+
+sudo certbot certonly --standalone -d www.shy-kid.tech
+
+printf %s "
+	listen load_balancer
+   	bind *:443 ssl crt /etc/letsencrypt/live/www.shy-kid.tech/fullchain.pem
+	reqadd X-Forwarded-Proto:\ https
+   	balance roundrobin
+	server 481297-web-01 35.168.3.169 check
+	server 481297-web-02 52.3.243.207 check
+" >> /etc/haproxy/haproxy.cfg
+
+echo "ENABLED=1" >> /etc/default/haproxy
+
+service haproxy start

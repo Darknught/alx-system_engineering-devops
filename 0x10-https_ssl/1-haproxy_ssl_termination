@@ -9,8 +9,8 @@ apt-get install -y software-properties-common
 add-apt-repository -y ppa:vbernat/haproxy-2.4
 apt-get -y update
 apt-get install -y haproxy
-
-sudo certbot certonly --standalone -d www.shy-kid.tech
+apt-get install -y certbot
+certbot certonly --standalone -d www.shy-kid.tech
 
 printf %s "
 	listen load_balancer

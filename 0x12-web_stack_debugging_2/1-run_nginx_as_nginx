@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
 # A script that configures container to run nginx as 'nginx' user
 
-if ! id -u nginx &> /dev/null; then
-	sudo adduser --system --no-create-home --disabled-login --group nginx
-fi
-
 # Set nginx to listen on all active IPs on port 8080
 sudo sed -i 's/^listen\s*80;/listen 8080;/g' /etc/nginx/sites-available/default
 
 # Set nginx to run as nginx user
 sudo sed -i 's/^user\s*www-data;/user nginx;/g' /etc/nginx/nginx.config
+
+# Grant permission
+chmod 644 /etc/nginx/nginx.conf
+
+pkil apache2
 
 # Restarring nginx service to apply changes
 sudo systemctl restart nginx

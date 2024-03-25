@@ -28,7 +28,7 @@ if __name__ == "__main__":
     user_id = sys.argv[1]
     url = 'https://jsonplaceholder.typicode.com/'
     user = requests.get(url + "users/{}".format(user_id)).json()
-    username = user.get("username") # correctly fetch the username
+    username = user.get("username")  # correctly fetch the username
     todos = requests.get(url + "todos", params={"userId": user_id}).json()
 
     # Export data to CSV

@@ -25,17 +25,15 @@ import sys
 
 
 if __name__ == "__main__":
+    user_id = sys.argv[1]
     url = 'https://jsonplaceholder.typicode.com/'
-    user = requests.get(url + "users/{}".format(sys.argv[1])).json()
-    todos = requests.get(url + "todos", params={"userId": sys.argv[1]}).json()
-
-    # Prepare data for CSV
-    csv_data = [["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"]]
-    for todo in todos:
-        csv_data.append([sys.argv[1], user.get("name"), str(
-            todo.get("completed")), todo.get("title")])
+    user = requests.get(url + "users/{}".format(user_id)).json()
+    username = user.get("username") # correctly fetch the username
+    todos = requests.get(url + "todos", params={"userId": user_id}).json()
 
     # Export data to CSV
-    with open(f"{sys.argv[1]}.csv", mode='w', newline='') as file:
-        writer = csv.writer(file, quoting=csv.QUOTE_ALL, quotechar='"')
-        writer.writerows(csv_data)
+    with open("{}.csv".format(user_id), "w", newline="") as csvfile:
+        writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
+        for todo in todos:
+            writer.writerow([user_id, username, str(
+                todo.get("completed")), todo.get("title")])

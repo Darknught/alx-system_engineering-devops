@@ -16,8 +16,8 @@ Requirements:
     - It must accept an employee ID as a command-line argument.
     - The script should not be executed when imported as a module.
 """
-import requests
 import sys
+import requests
 
 
 if __name__ == "__main__":

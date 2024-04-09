@@ -23,8 +23,7 @@ def count_words(subreddit, word_list, after=None, counts=None):
             title = child.get("data", {}).get("title", "").lower()
             for word in word_list:
                 if word.lower() in title:
-                    counts[word] = counts.get(
-                            word, 0) + title.count(word.lower())
+                    counts[word.lower()] = counts.get(word.lower(), 0) + 1
 
         after = data.get("after")
         if after:
@@ -32,6 +31,6 @@ def count_words(subreddit, word_list, after=None, counts=None):
         else:
             sorted_counts = sorted(counts.items(), key=lambda x: (-x[1], x[0]))
             for word, count in sorted_counts:
-                print("{}: {}".format(word.lower(), count))
+                print("{}: {}".format(word, count))
     else:
         print("Invalid subreddit")

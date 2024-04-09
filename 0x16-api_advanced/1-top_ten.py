@@ -9,7 +9,7 @@ import requests
 def top_ten(subreddit):
     """ The function to query the API """
     url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=10"
-    headers = {'User-Agent': 'MyGuy'}  # Custom User-Agent to avoid errors
+    headers = {'User-Agent': 'Darknught'}  # Custom User-Agent to avoid errors
     response = requests.get(url, headers=headers, allow_redirects=False)
 
     if response.status_code == 200:

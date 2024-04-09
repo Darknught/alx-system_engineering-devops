@@ -9,10 +9,12 @@ def number_of_subscribers(subreddit):
     headers = {'User-Agent': 'MyGuy'}  # a custom User-Agent to avoid errors
     response = requests.get(url, headers=headers, allow_redirects=False)
 
-    if response.status_code == 200:
-        data = response.json().get('data', None)
-        if data:
-            subscribers = data.get('subscribers', None)
-            if subscribers is not None:
-                return subscribers
+    if response.status_code == 404:
+        return 0
+
+    data = response.json().get('data', None)
+    if data:
+        subscribers = data.get('subscribers', None)
+        if subscribers is not None:
+            return subscribers
     return 0

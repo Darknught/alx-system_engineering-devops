@@ -1,22 +1,6 @@
-# Puppet manifest to automate debugging of Apache 500 Internal Server Error
+# Fixes bad `phpp` extensions to `php` in the WordPress file `wp-settings.php`.
 
-# Install strace package
-package { 'strace':
-  ensure => installed,
-}
-
-# Define exec resource to run strace
-exec { 'debug_apache':
-  command   => 'strace -p 168181',
-  path      => '/usr/bin:/bin',
-  logoutput => true,
-  require   => Package['strace'],
-}
-
-# Define exec resource to reproduce the issue with curl
-exec { 'curl_localhost':
-  command   => 'curl -sI 127.0.0.1',
-  path      => '/usr/bin:/bin',
-  logoutput => true,
-  require   => Exec['debug_apache'],
+exec { 'fix-wordpress':
+  command => 'sed -i s/phpp/php/g /var/www/html/wp-settings.php',
+  path    => '/usr/local/bin/:/bin/'
 }

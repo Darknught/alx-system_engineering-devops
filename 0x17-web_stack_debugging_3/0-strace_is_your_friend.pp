@@ -7,7 +7,7 @@ package { 'strace':
 
 # Define exec resource to run strace
 exec { 'debug_apache':
-  command   => 'strace -p <apache_pid>',
+  command   => 'strace -p 168181',
   path      => '/usr/bin:/bin',
   logoutput => true,
   require   => Package['strace'],
